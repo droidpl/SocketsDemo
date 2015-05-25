@@ -1,10 +1,10 @@
 package com.mobgen.sockets.demo.backend.receivers;
 
-import org.json.JSONObject;
+import com.mobgen.sockets.demo.backend.model.Player;
 
 /**
  * Created by javierdepedrolopez on 25/05/15.
  */
 public interface PlayerReceiver {
-	void receivePlayer(JSONObject player);
+	void receivePlayer(Player player);
 }

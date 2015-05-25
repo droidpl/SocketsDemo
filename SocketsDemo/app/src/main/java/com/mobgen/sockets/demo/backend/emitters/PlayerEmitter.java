@@ -1,6 +1,6 @@
 package com.mobgen.sockets.demo.backend.emitters;
 
-import com.github.nkzawa.emitter.Emitter;
+import com.mobgen.sockets.demo.backend.model.Player;
 import com.mobgen.sockets.demo.backend.receivers.PlayerReceiver;
 
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 /**
  * Created by javierdepedrolopez on 25/05/15.
  */
-public class PlayerEmitter implements Emitter.Listener {
+public class PlayerEmitter extends UIEmitter<Player> {
 	private PlayerReceiver mReceiver;
 
 	public PlayerEmitter(PlayerReceiver receiver){
@@ -16,7 +16,12 @@ public class PlayerEmitter implements Emitter.Listener {
 	}
 
 	@Override
-	public void call (Object... args) {
-		mReceiver.receivePlayer((JSONObject) args[args.length - 1]);
+	public void uiEmit (Player data) {
+		mReceiver.receivePlayer(data);
+	}
+
+	@Override
+	public Player parse (JSONObject json) {
+		return new Player();
 	}
 }

@@ -4,6 +4,8 @@ import com.mobgen.sockets.demo.backend.SocketManager;
 import com.mobgen.sockets.demo.backend.SocketSend;
 import com.mobgen.sockets.demo.backend.emitters.BoardEmitter;
 import com.mobgen.sockets.demo.backend.emitters.PlayerEmitter;
+import com.mobgen.sockets.demo.backend.model.Board;
+import com.mobgen.sockets.demo.backend.model.Player;
 import com.mobgen.sockets.demo.backend.receivers.BoardReceiver;
 import com.mobgen.sockets.demo.backend.receivers.PlayerReceiver;
 import com.mobgen.sockets.demo.presenters.framework.SocketPresenter;
@@ -44,18 +46,13 @@ public class SocketBoardPresenter extends SocketPresenter implements BoardReceiv
 	}
 
 	@Override
-	public void receiveBoard (JSONObject board) {
-		new Handler(Looper.getMainLooper()).post(new Runnable() {
-			@Override
-			public void run () {
-				mTranslator.startTurn();
-			}
-		});
+	public void receiveBoard (Board board) {
+		mTranslator.startTurn();
 		Log.i(getClass().getSimpleName(), board.toString());
 	}
 
 	@Override
-	public void receivePlayer (JSONObject player) {
+	public void receivePlayer (Player player) {
 		Log.i(getClass().getSimpleName(), player.toString());
 	}
 }

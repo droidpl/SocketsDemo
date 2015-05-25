@@ -1,6 +1,6 @@
 package com.mobgen.sockets.demo.backend.emitters;
 
-import com.github.nkzawa.emitter.Emitter;
+import com.mobgen.sockets.demo.backend.model.Board;
 import com.mobgen.sockets.demo.backend.receivers.BoardReceiver;
 
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 /**
  * Created by javierdepedrolopez on 25/05/15.
  */
-public class BoardEmitter implements Emitter.Listener{
+public class BoardEmitter extends UIEmitter<Board>{
 
 	private BoardReceiver mReceiver;
 
@@ -17,7 +17,13 @@ public class BoardEmitter implements Emitter.Listener{
 	}
 
 	@Override
-	public void call (Object... args) {
-		mReceiver.receiveBoard((JSONObject) args[args.length - 1]);
+	public void uiEmit (Board data) {
+		mReceiver.receiveBoard(data);
+	}
+
+	@Override
+	public Board parse (JSONObject json) {
+		//TODO parse json
+		return new Board();
 	}
 }
