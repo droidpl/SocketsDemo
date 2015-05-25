@@ -1,0 +1,42 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+//Useful functions
+def gitCount() {
+    def process = "git rev-list HEAD --first-parent --count".execute()
+    def counter = process.text.toInteger()
+    return counter;
+}
+
+def gitTag(){
+    def tag = "git describe".execute().text.trim()
+    if(tag.isEmpty()){
+        tag = "v0"
+    }
+    return tag
+}
+
+def getBranchBuild(){
+    return "git symbolic-ref --short -q HEAD".execute().text.trim();
+}
+
+def buildTime() {
+    return new Date().getTime()
+}
