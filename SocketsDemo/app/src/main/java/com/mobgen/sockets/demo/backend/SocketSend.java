@@ -1,4 +1,4 @@
-package demo.sockets.mobgen.com.socketsdemo.backend;
+package com.mobgen.sockets.demo.backend;
 
 /**
  * Created by javierdepedrolopez on 25/05/15.

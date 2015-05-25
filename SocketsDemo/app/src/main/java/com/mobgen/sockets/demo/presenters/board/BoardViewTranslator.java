@@ -1,4 +1,4 @@
-package demo.sockets.mobgen.com.socketsdemo.presenters.board;
+package com.mobgen.sockets.demo.presenters.board;
 
 /**
  * Created by javierdepedrolopez on 25/05/15.

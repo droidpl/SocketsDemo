@@ -1,8 +1,10 @@
-package demo.sockets.mobgen.com.socketsdemo.backend;
+package com.mobgen.sockets.demo.backend;
 
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.mobgen.sockets.demo.BuildConfig;
+import com.mobgen.sockets.demo.exceptions.SocketException;
 
 import org.json.JSONObject;
 
@@ -11,9 +13,6 @@ import android.util.Log;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-
-import demo.sockets.mobgen.com.socketsdemo.BuildConfig;
-import demo.sockets.mobgen.com.socketsdemo.exceptions.SocketException;
 
 /**
  * The socket manager that has the current socket instance.
@@ -76,13 +75,14 @@ public class SocketManager {
 
 	/**
 	 * Observes a given action.
-	 * @param sendAction The action to oberve.
+	 * @param sendAction The action to observe.
 	 * @param listener The listener for this action.
 	 */
 	public void on(SocketSend sendAction, Emitter.Listener listener){
 		ensureConnected();
 		Emitter.Listener cachedListener = mCacheListeners.get(sendAction.getAction());
 		if(cachedListener != null){
+			mCacheListeners.remove(sendAction.getAction());
 			removeObserver(sendAction.getAction(), cachedListener);
 		}
 		mCacheListeners.put(sendAction.getAction(), listener);
@@ -100,15 +100,6 @@ public class SocketManager {
 		}else{
 			Log.d(getClass().getSimpleName(), "You are doing something wrong, you are listening the same event multiple times.");
 		}
-	}
-
-	/**
-	 * Emits an ack to the server.
-	 */
-	public void ack(){
-		ensureConnected();
-		//TODO send ack
-		Log.d(getClass().getSimpleName(), "ACK sent");
 	}
 
 	/**
@@ -142,7 +133,6 @@ public class SocketManager {
 	 */
 	private void removeObserver(String sendAction, Emitter.Listener attachedListener){
 		mSocket.off(sendAction, attachedListener);
-		mCacheListeners.remove(sendAction);
 		Log.d(getClass().getSimpleName(), "Removed observer for " + sendAction + " action");
 	}
 
@@ -154,6 +144,7 @@ public class SocketManager {
 			Emitter.Listener listener = mCacheListeners.get(key);
 			removeObserver(key, listener);
 		}
+		mCacheListeners.clear();
 	}
 
 	/**

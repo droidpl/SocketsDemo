@@ -1,4 +1,4 @@
-package demo.sockets.mobgen.com.socketsdemo.presenters.framework;
+package com.mobgen.sockets.demo.presenters.framework;
 
 import android.os.Bundle;
 

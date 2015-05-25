@@ -1,4 +1,4 @@
-package demo.sockets.mobgen.com.socketsdemo;
+package com.mobgen.socketsdemo.test;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

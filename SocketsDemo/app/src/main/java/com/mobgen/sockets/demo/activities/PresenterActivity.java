@@ -1,9 +1,10 @@
-package demo.sockets.mobgen.com.socketsdemo.activities;
+package com.mobgen.sockets.demo.activities;
+
+import com.mobgen.sockets.demo.presenters.framework.Presenter;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import demo.sockets.mobgen.com.socketsdemo.presenters.framework.Presenter;
 
 /**
  * Created by javierdepedrolopez on 25/05/15.

@@ -1,4 +1,4 @@
-package demo.sockets.mobgen.com.socketsdemo.exceptions;
+package com.mobgen.sockets.demo.exceptions;
 
 /**
  * Created by javierdepedrolopez on 25/05/15.

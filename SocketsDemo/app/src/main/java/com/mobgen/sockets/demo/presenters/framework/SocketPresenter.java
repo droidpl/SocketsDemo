@@ -1,8 +1,8 @@
-package demo.sockets.mobgen.com.socketsdemo.presenters.framework;
+package com.mobgen.sockets.demo.presenters.framework;
+
+import com.mobgen.sockets.demo.backend.SocketManager;
 
 import android.util.Log;
-
-import demo.sockets.mobgen.com.socketsdemo.backend.SocketManager;
 
 /**
  * Created by javierdepedrolopez on 25/05/15.
