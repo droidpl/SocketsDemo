@@ -25,7 +25,7 @@ public class BoardActivity extends PresenterActivity<SocketBoardPresenter> imple
 
 	@Override
 	public SocketBoardPresenter createPresenter () {
-		return new SocketBoardPresenter(this, this);
+		return new SocketBoardPresenter(this);
 	}
 
 	@Override
