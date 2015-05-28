@@ -18,7 +18,7 @@ android {
         versionCode versionPatch
         versionName "${versionTag}.${versionPatch}"
         buildConfigField "String", "BRANCH", "\"${branchBuild}\""
-        buildConfigField "String", "SOCKET_URL", "\"http://ec2-52-28-29-207.eu-central-1.compute.amazonaws.com:3000\""
+        buildConfigField "String", "SOCKET_URL", "\"YOUR_URL_HERE""
     }
 
     signingConfigs {
